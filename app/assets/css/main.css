@@ -1,6 +1,246 @@
 @import "tailwindcss";
 @import "@nuxt/ui";
+@import "tw-animate-css";
 
 @theme static {
   --font-sans: "Public Sans", sans-serif;
+}
+
+@custom-variant dark (&:is(.dark *));
+
+@theme reference {
+  --font-lato: var("--font-lato");
+
+  --color-simorange: #f67366;
+  --color-cream: #fff6df;
+  --color-softblue: #e8eeff;
+  --color-simblue: #2c2d5b;
+}
+
+* {
+  @apply border-border outline-ring/50;
+}
+body {
+  @apply bg-background text-foreground font-lato;
+}
+
+@layer components {
+  .description-container {
+    @apply grid sm:grid-cols-2 lg:grid-cols-4 gap-c-4 w-full pb-c-5 lg:py-c-5;
+    div {
+      @apply flex flex-col justify-center items-start sm:items-center lg:items-start mx-c-4 lg:mx-0;
+      h3 {
+        @apply text-muted-foreground text-c-4 text-ellipsis;
+      }
+      p {
+        @apply text-c-5 text-foreground font-semibold text-center md:text-left;
+      }
+    }
+  }
+}
+
+:root {
+  --radius: 0.625rem; /* soft lavender */ /* deep violet */
+
+  --card: oklch(1 0 0); /* light pastel purple */
+  --card-foreground: oklch(0.145 0 0);
+
+  --popover: oklch(1 0 0);
+  --popover-foreground: oklch(0.145 0 0);
+
+  --primary: oklch(0.205 0 0); /* neon blue */
+  --primary-foreground: oklch(0.985 0 0); /* white */
+
+  --secondary: oklch(0.97 0 0); /* mint green */
+  --secondary-foreground: oklch(0.205 0 0);
+  --muted: oklch(0.97 0 0); /* pastel pink */
+  --muted-foreground: oklch(0.556 0 0);
+  --accent: oklch(0.97 0 0); /* peachy coral */
+  --accent-foreground: oklch(0.205 0 0);
+
+  --destructive: oklch(0.577 0.245 27.325); /* hot red */
+  --border: oklch(0.922 0 0);
+  --input: oklch(0.922 0 0);
+  --ring: oklch(0.708 0 0); /* punchy blue */ --background: oklch(1 0 0); --foreground: oklch(0.145 0 0); --chart-1: oklch(0.646 0.222 41.116); --chart-2: oklch(0.6 0.118 184.704); --chart-3: oklch(0.398 0.07 227.392); --chart-4: oklch(0.828 0.189 84.429); --chart-5: oklch(0.769 0.188 70.08); --sidebar: oklch(0.985 0 0); --sidebar-foreground: oklch(0.145 0 0); --sidebar-primary: oklch(0.205 0 0); --sidebar-primary-foreground: oklch(0.985 0 0); --sidebar-accent: oklch(0.97 0 0); --sidebar-accent-foreground: oklch(0.205 0 0); --sidebar-border: oklch(0.922 0 0); --sidebar-ring: oklch(0.708 0 0);
+}
+
+.dark {
+  --background: oklch(0.145 0 0); /* dark violet */
+  --foreground: oklch(0.985 0 0);
+
+  --card: oklch(0.205 0 0);
+  --card-foreground: oklch(0.985 0 0);
+  --popover: oklch(0.205 0 0);
+  --popover-foreground: oklch(0.985 0 0);
+
+  --primary: oklch(0.922 0 0); /* neon blue */
+  --primary-foreground: oklch(0.205 0 0);
+
+  --secondary: oklch(0.269 0 0); /* teal green */
+  --secondary-foreground: oklch(0.985 0 0);
+  --muted: oklch(0.269 0 0);
+  --muted-foreground: oklch(0.708 0 0);
+  --accent: oklch(0.269 0 0); /* coral */
+  --accent-foreground: oklch(0.985 0 0);
+
+  --destructive: oklch(0.704 0.191 22.216);
+  --border: oklch(1 0 0 / 10%);
+  --input: oklch(1 0 0 / 15%);
+  --ring: oklch(0.556 0 0);
+  --chart-1: oklch(0.488 0.243 264.376);
+  --chart-2: oklch(0.696 0.17 162.48);
+  --chart-3: oklch(0.769 0.188 70.08);
+  --chart-4: oklch(0.627 0.265 303.9);
+  --chart-5: oklch(0.645 0.246 16.439);
+  --sidebar: oklch(0.205 0 0);
+  --sidebar-foreground: oklch(0.985 0 0);
+  --sidebar-primary: oklch(0.488 0.243 264.376);
+  --sidebar-primary-foreground: oklch(0.985 0 0);
+  --sidebar-accent: oklch(0.269 0 0);
+  --sidebar-accent-foreground: oklch(0.985 0 0);
+  --sidebar-border: oklch(1 0 0 / 10%);
+  --sidebar-ring: oklch(0.556 0 0);
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border-border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --color-sidebar-ring: var(--sidebar-ring);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar: var(--sidebar);
+  --color-chart-5: var(--chart-5);
+  --color-chart-4: var(--chart-4);
+  --color-chart-3: var(--chart-3);
+  --color-chart-2: var(--chart-2);
+  --color-chart-1: var(--chart-1);
+}
+
+@theme {
+  --spacing-c-0-5: clamp(calc(2px * 0.7), calc(2 / 1440 * 100vw), 2px);
+  --spacing-c-1: clamp(calc(4px * 0.7), calc(4 / 1440 * 100vw), 4px);
+  --spacing-c-1-5: clamp(calc(6px * 0.7), calc(6 / 1440 * 100vw), 6px);
+  --spacing-c-2: clamp(calc(8px * 0.7), calc(8 / 1440 * 100vw), 8px);
+  --spacing-c-2-5: clamp(calc(10px * 0.7), calc(10 / 1440 * 100vw), 10px);
+  --spacing-c-3: clamp(calc(12px * 0.7), calc(12 / 1440 * 100vw), 12px);
+  --spacing-c-3-5: clamp(calc(14px * 0.7), calc(14 / 1440 * 100vw), 14px);
+  --spacing-c-4: clamp(calc(16px * 0.7), calc(16 / 1440 * 100vw), 16px);
+  --spacing-c-4-5: clamp(calc(18px * 0.7), calc(18 / 1440 * 100vw), 18px);
+  --spacing-c-5: clamp(calc(20px * 0.7), calc(20 / 1440 * 100vw), 20px);
+  --spacing-c-5-5: clamp(calc(22px * 0.7), calc(22 / 1440 * 100vw), 22px);
+  --spacing-c-6: clamp(calc(24px * 0.7), calc(24 / 1440 * 100vw), 24px);
+  --spacing-c-6-5: clamp(calc(26px * 0.7), calc(26 / 1440 * 100vw), 26px);
+  --spacing-c-7: clamp(calc(28px * 0.7), calc(28 / 1440 * 100vw), 28px);
+  --spacing-c-7-5: clamp(calc(30px * 0.7), calc(30 / 1440 * 100vw), 30px);
+  --spacing-c-8: clamp(calc(32px * 0.7), calc(32 / 1440 * 100vw), 32px);
+  --spacing-c-8-5: clamp(calc(34px * 0.7), calc(34 / 1440 * 100vw), 34px);
+  --spacing-c-9: clamp(calc(36px * 0.7), calc(36 / 1440 * 100vw), 36px);
+  --spacing-c-9-5: clamp(calc(38px * 0.7), calc(38 / 1440 * 100vw), 38px);
+  --spacing-c-10: clamp(calc(40px * 0.7), calc(40 / 1440 * 100vw), 40px);
+  --spacing-c-10-5: clamp(calc(42px * 0.7), calc(42 / 1440 * 100vw), 42px);
+  --spacing-c-11: clamp(calc(44px * 0.7), calc(44 / 1440 * 100vw), 44px);
+  --spacing-c-12: clamp(calc(48px * 0.7), calc(48 / 1440 * 100vw), 48px);
+  --spacing-c-14: clamp(calc(56px * 0.7), calc(56 / 1440 * 100vw), 56px);
+  --spacing-c-16: clamp(calc(64px * 0.7), calc(64 / 1440 * 100vw), 64px);
+  --spacing-c-20: clamp(calc(80px * 0.7), calc(80 / 1440 * 100vw), 80px);
+  --spacing-c-24: clamp(calc(96px * 0.7), calc(96 / 1440 * 100vw), 96px);
+  --spacing-c-28: clamp(calc(112px * 0.7), calc(112 / 1440 * 100vw), 112px);
+  --spacing-c-32: clamp(calc(128px * 0.7), calc(128 / 1440 * 100vw), 128px);
+  --spacing-c-36: clamp(calc(144px * 0.7), calc(144 / 1440 * 100vw), 144px);
+  --spacing-c-40: clamp(calc(160px * 0.7), calc(160 / 1440 * 100vw), 160px);
+  --spacing-c-44: clamp(calc(176px * 0.7), calc(176 / 1440 * 100vw), 176px);
+  --spacing-c-48: clamp(calc(192px * 0.7), calc(192 / 1440 * 100vw), 192px);
+  --spacing-c-56: clamp(calc(224px * 0.7), calc(224 / 1440 * 100vw), 224px);
+  --spacing-c-64: clamp(calc(256px * 0.7), calc(256 / 1440 * 100vw), 256px);
+  --spacing-c-72: clamp(calc(288px * 0.7), calc(288 / 1440 * 100vw), 288px);
+  --spacing-c-80: clamp(calc(320px * 0.7), calc(320 / 1440 * 100vw), 320px);
+  --spacing-c-96: clamp(calc(384px * 0.7), calc(384 / 1440 * 100vw), 384px);
+  --spacing-c-112: clamp(calc(448px * 0.7), calc(448 / 1440 * 100vw), 448px);
+  --spacing-c-128: clamp(calc(512px * 0.7), calc(512 / 1440 * 100vw), 512px);
+  --spacing-c-144: clamp(calc(576px * 0.7), calc(576 / 1440 * 100vw), 576px);
+  --spacing-c-160: clamp(calc(640px * 0.7), calc(640 / 1440 * 100vw), 640px);
+  --spacing-c-176: clamp(calc(704px * 0.7), calc(704 / 1440 * 100vw), 704px);
+  --spacing-c-192: clamp(calc(768px * 0.7), calc(768 / 1440 * 100vw), 768px);
+  --spacing-c-208: clamp(calc(832px * 0.7), calc(832 / 1440 * 100vw), 832px);
+  --spacing-c-224: clamp(calc(896px * 0.7), calc(896 / 1440 * 100vw), 896px);
+  --spacing-c-240: clamp(calc(960px * 0.7), calc(960 / 1440 * 100vw), 960px);
+  --spacing-c-256: clamp(calc(1024px * 0.7), calc(1024 / 1440 * 100vw), 1024px);
+
+  --radius-c-0-5: clamp(calc(2px * 0.7), calc(2 / 1440 * 100vw), 2px);
+  --radius-c-1: clamp(calc(4px * 0.7), calc(4 / 1440 * 100vw), 4px);
+  --radius-c-1-5: clamp(calc(6px * 0.7), calc(6 / 1440 * 100vw), 6px);
+  --radius-c-2: clamp(calc(8px * 0.7), calc(8 / 1440 * 100vw), 8px);
+  --radius-c-2-5: clamp(calc(10px * 0.7), calc(10 / 1440 * 100vw), 10px);
+  --radius-c-3: clamp(calc(12px * 0.7), calc(12 / 1440 * 100vw), 12px);
+  --radius-c-3-5: clamp(calc(14px * 0.7), calc(14 / 1440 * 100vw), 14px);
+  --radius-c-4: clamp(calc(16px * 0.7), calc(16 / 1440 * 100vw), 16px);
+  --radius-c-4-5: clamp(calc(18px * 0.7), calc(18 / 1440 * 100vw), 18px);
+  --radius-c-5: clamp(calc(20px * 0.7), calc(20 / 1440 * 100vw), 20px);
+  --radius-c-5-5: clamp(calc(22px * 0.7), calc(22 / 1440 * 100vw), 22px);
+  --radius-c-6: clamp(calc(24px * 0.7), calc(24 / 1440 * 100vw), 24px);
+  --radius-c-6-5: clamp(calc(26px * 0.7), calc(26 / 1440 * 100vw), 26px);
+  --radius-c-7: clamp(calc(28px * 0.7), calc(28 / 1440 * 100vw), 28px);
+  --radius-c-7-5: clamp(calc(30px * 0.7), calc(30 / 1440 * 100vw), 30px);
+  --radius-c-8: clamp(calc(32px * 0.7), calc(32 / 1440 * 100vw), 32px);
+  --radius-c-8-5: clamp(calc(34px * 0.7), calc(34 / 1440 * 100vw), 34px);
+  --radius-c-9: clamp(calc(36px * 0.7), calc(36 / 1440 * 100vw), 36px);
+  --radius-c-9-5: clamp(calc(38px * 0.7), calc(38 / 1440 * 100vw), 38px);
+  --radius-c-10: clamp(calc(40px * 0.7), calc(40 / 1440 * 100vw), 40px);
+
+  --text-c-0-5: clamp(calc(2px * 0.7), calc(2 / 1440 * 100vw), 2px);
+  --text-c-1: clamp(calc(4px * 0.7), calc(4 / 1440 * 100vw), 4px);
+  --text-c-1-5: clamp(calc(6px * 0.7), calc(6 / 1440 * 100vw), 6px);
+  --text-c-2: clamp(calc(8px * 0.7), calc(8 / 1440 * 100vw), 8px);
+  --text-c-2-5: clamp(calc(10px * 0.7), calc(10 / 1440 * 100vw), 10px);
+  --text-c-3: clamp(calc(12px * 0.7), calc(12 / 1440 * 100vw), 12px);
+  --text-c-3-5: clamp(calc(14px * 0.7), calc(14 / 1440 * 100vw), 14px);
+  --text-c-4: clamp(calc(16px * 0.7), calc(16 / 1440 * 100vw), 16px);
+  --text-c-4-5: clamp(calc(18px * 0.7), calc(18 / 1440 * 100vw), 18px);
+  --text-c-5: clamp(calc(20px * 0.7), calc(20 / 1440 * 100vw), 20px);
+  --text-c-5-5: clamp(calc(22px * 0.7), calc(22 / 1440 * 100vw), 22px);
+  --text-c-6: clamp(calc(24px * 0.7), calc(24 / 1440 * 100vw), 24px);
+  --text-c-6-5: clamp(calc(26px * 0.7), calc(26 / 1440 * 100vw), 26px);
+  --text-c-7: clamp(calc(28px * 0.7), calc(28 / 1440 * 100vw), 28px);
+  --text-c-7-5: clamp(calc(30px * 0.7), calc(30 / 1440 * 100vw), 30px);
+  --text-c-8: clamp(calc(32px * 0.7), calc(32 / 1440 * 100vw), 32px);
+  --text-c-8-5: clamp(calc(34px * 0.7), calc(34 / 1440 * 100vw), 34px);
+  --text-c-9: clamp(calc(36px * 0.7), calc(36 / 1440 * 100vw), 36px);
+  --text-c-9-5: clamp(calc(38px * 0.7), calc(38 / 1440 * 100vw), 38px);
+  --text-c-10: clamp(calc(40px * 0.7), calc(40 / 1440 * 100vw), 40px);
+  --text-c-10-5: clamp(calc(42px * 0.7), calc(42 / 1440 * 100vw), 42px);
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
 }

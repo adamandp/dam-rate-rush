@@ -23,9 +23,7 @@ useSeoMeta({
 </script>
 
 <template>
-  <UApp>
-    <UMain>
-      <NuxtPage />
-    </UMain>
-  </UApp>
+  <main class="bg-background min-h-screen">
+    <NuxtPage />
+  </main>
 </template>

@@ -2,20 +2,7 @@
 @import "@nuxt/ui";
 @import "tw-animate-css";
 
-@theme static {
-  --font-sans: "Public Sans", sans-serif;
-}
-
 @custom-variant dark (&:is(.dark *));
-
-@theme reference {
-  --font-lato: var("--font-lato");
-
-  --color-simorange: #f67366;
-  --color-cream: #fff6df;
-  --color-softblue: #e8eeff;
-  --color-simblue: #2c2d5b;
-}
 
 * {
   @apply border-border outline-ring/50;
@@ -36,6 +23,52 @@ body {
         @apply text-c-5 text-foreground font-semibold text-center md:text-left;
       }
     }
+  }
+
+  .glass-panel {
+    @apply bg-white/70 dark:bg-slate-800/60 backdrop-blur-lg border border-slate-200/50 dark:border-white/10 shadow-xl dark:shadow-2xl;
+  }
+
+  .animate-float {
+    animation: float 6s ease-in-out infinite;
+  }
+
+  .animate-fade-in-up {
+    animation: fadeInUp 0.8s ease-out forwards;
+  }
+}
+
+:deep(::-webkit-scrollbar) {
+  width: 8px;
+}
+:deep(::-webkit-scrollbar-track) {
+  @apply bg-slate-100 dark:bg-slate-900;
+}
+:deep(::-webkit-scrollbar-thumb) {
+  @apply bg-slate-300 dark:bg-slate-700 rounded-full;
+}
+:deep(::-webkit-scrollbar-thumb:hover) {
+  @apply bg-slate-400 dark:bg-slate-600;
+}
+
+@keyframes fadeInUp {
+  0% {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes float {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
   }
 }
 
@@ -61,7 +94,22 @@ body {
   --destructive: oklch(0.577 0.245 27.325); /* hot red */
   --border: oklch(0.922 0 0);
   --input: oklch(0.922 0 0);
-  --ring: oklch(0.708 0 0); /* punchy blue */ --background: oklch(1 0 0); --foreground: oklch(0.145 0 0); --chart-1: oklch(0.646 0.222 41.116); --chart-2: oklch(0.6 0.118 184.704); --chart-3: oklch(0.398 0.07 227.392); --chart-4: oklch(0.828 0.189 84.429); --chart-5: oklch(0.769 0.188 70.08); --sidebar: oklch(0.985 0 0); --sidebar-foreground: oklch(0.145 0 0); --sidebar-primary: oklch(0.205 0 0); --sidebar-primary-foreground: oklch(0.985 0 0); --sidebar-accent: oklch(0.97 0 0); --sidebar-accent-foreground: oklch(0.205 0 0); --sidebar-border: oklch(0.922 0 0); --sidebar-ring: oklch(0.708 0 0);
+  --ring: oklch(0.708 0 0); /* punchy blue */
+  --background: oklch(1 0 0);
+  --foreground: oklch(0.145 0 0);
+  --chart-1: oklch(0.646 0.222 41.116);
+  --chart-2: oklch(0.6 0.118 184.704);
+  --chart-3: oklch(0.398 0.07 227.392);
+  --chart-4: oklch(0.828 0.189 84.429);
+  --chart-5: oklch(0.769 0.188 70.08);
+  --sidebar: oklch(0.985 0 0);
+  --sidebar-foreground: oklch(0.145 0 0);
+  --sidebar-primary: oklch(0.205 0 0);
+  --sidebar-primary-foreground: oklch(0.985 0 0);
+  --sidebar-accent: oklch(0.97 0 0);
+  --sidebar-accent-foreground: oklch(0.205 0 0);
+  --sidebar-border: oklch(0.922 0 0);
+  --sidebar-ring: oklch(0.708 0 0);
 }
 
 .dark {
@@ -140,6 +188,16 @@ body {
   --color-chart-3: var(--chart-3);
   --color-chart-2: var(--chart-2);
   --color-chart-1: var(--chart-1);
+
+  /* 1. Gabungin Font */
+  --font-sans: "Public Sans", sans-serif;
+  --font-lato: var(--font-lato);
+
+  /* 2. Gabungin Warna Custom */
+  --color-simorange: #f67366;
+  --color-cream: #fff6df;
+  --color-softblue: #e8eeff;
+  --color-simblue: #2c2d5b;
 }
 
 @theme {

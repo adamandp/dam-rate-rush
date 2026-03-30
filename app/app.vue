@@ -1,24 +1,28 @@
 <script setup>
 useHead({
   meta: [{ name: "viewport", content: "width=device-width, initial-scale=1" }],
-  link: [{ rel: "icon", href: "/favicon.ico" }],
-  htmlAttrs: {
-    lang: "en",
-  },
+  link: [
+    { rel: "icon", href: "/favicon.ico" },
+    {
+      rel: "stylesheet",
+      href: "https://unpkg.com/@phosphor-icons/web@2.1.1/src/regular/style.css",
+    },
+  ],
 });
 
-const title = "Nuxt Starter Template";
+const title = "Dam RateRush | Shipping Cost Checker";
+
 const description =
-  "A production-ready starter template powered by Nuxt UI. Build beautiful, accessible, and performant applications in minutes, not hours.";
+  "Easily check and compare shipping costs from multiple couriers. Enter your origin and destination to get real-time delivery rates, estimated times, and the best shipping options.";
 
 useSeoMeta({
   title,
   description,
   ogTitle: title,
   ogDescription: description,
-  ogImage: "https://ui.nuxt.com/assets/templates/nuxt/starter-light.png",
-  twitterImage: "https://ui.nuxt.com/assets/templates/nuxt/starter-light.png",
-  twitterCard: "summary_large_image",
+  ogType: "website",
+  twitterTitle: title,
+  twitterDescription: description,
 });
 </script>
 
